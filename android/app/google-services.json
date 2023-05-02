@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "353929492462",
+    "project_id": "alif-arfab-pavel",
+    "storage_bucket": "alif-arfab-pavel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353929492462:android:6f8ad82325439f7aa140ff",
+        "android_client_info": {
+          "package_name": "com.alif.arfab.resume_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353929492462-ft097i2d1gs63mn52c4huurqq1hi0bom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFdN2fLkBmHvJYPg51Qg201xljvPAP3yE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353929492462-ft097i2d1gs63mn52c4huurqq1hi0bom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
