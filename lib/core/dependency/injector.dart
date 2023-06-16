@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 
 abstract class Injector {
-  void registerLazySingleton<T extends Object>(T t);
-  void registerFactory<T extends Object>(T t);
+  void registerLazySingleton<T extends Object>(T Function() fn);
+  void registerFactory<T extends Object>(T Function() fn);
   T get<T extends Object>();
 }
 
@@ -14,12 +14,12 @@ class AppInjector implements Injector {
   }
 
   @override
-  void registerFactory<T extends Object>(T t) {
-    _getIt.registerFactory<T>(() => t);
+  void registerFactory<T extends Object>(T Function() fn) {
+    _getIt.registerFactory<T>(fn);
   }
 
   @override
-  void registerLazySingleton<T extends Object>(T t) {
-    _getIt.registerLazySingleton<T>(() => t);
+  void registerLazySingleton<T extends Object>(T Function() fn) {
+    _getIt.registerLazySingleton<T>(fn);
   }
 }

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_app/application/theme/my_dark_theme.dart';
-import 'package:resume_app/core/config/config_holder.dart';
 import 'package:resume_app/core/module/route_module.dart';
 
 class MyApp extends StatefulWidget {
   final List<RouteModule> routeMoudules;
-  final ConfigHolder configHolder;
   final String initialRoute;
 
   const MyApp({
     super.key,
     required this.routeMoudules,
     required this.initialRoute,
-    required this.configHolder,
   });
 
   @override
@@ -34,7 +31,7 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       onGenerateRoute: _generateRoute,
       initialRoute: widget.initialRoute,
       onUnknownRoute: (settings) => MaterialPageRoute(
@@ -51,7 +48,6 @@ class _MyAppState extends State<MyApp> {
     for (final routeModule in widget.routeMoudules) {
       final featureRouteMap = routeModule.get(
         routeSettings: settings,
-        configHolder: widget.configHolder,
       );
       routesMap.addAll(featureRouteMap);
     }

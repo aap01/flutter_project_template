@@ -1,6 +1,6 @@
 # resume_app
 
-A new Flutter scratchpad-project to build up your resume on top of it
+A new Flutter scratchpad-project to build up your flutter project on top of it
 
 ## Feature
 
@@ -9,5 +9,6 @@ A new Flutter scratchpad-project to build up your resume on top of it
 ## Run 
 
 ```bash
+# Current flutter verison 3.10.0
 flutter run -t lib/application/env/prod/prod_main.dart
 ```

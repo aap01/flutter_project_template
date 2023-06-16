@@ -3,7 +3,7 @@ import 'package:resume_app/application/resume_app.dart';
 import 'package:resume_app/core/config/config_holder.dart';
 import 'package:resume_app/core/dependency/injector.dart';
 import 'package:resume_app/core/feature_container/feature_container.dart';
-import 'package:resume_app/feature/profile/route/profile_route_module.dart';
+import 'package:resume_app/feature/profile/core/route/profile_route_module.dart';
 
 abstract class AppRunner {
   final FeatureContainer featureContainer;
@@ -20,7 +20,7 @@ abstract class AppRunner {
     await _preRun();
     final appInjector = AppInjector();
     final injectionList = <Future>[];
-    final configHolder = ConfigHolder(
+    ConfigHolder.init(
       serverConfig: ServerConfig.prod,
       featureConfig: FeatureConfig.prod,
     );
@@ -28,7 +28,6 @@ abstract class AppRunner {
       injectionList.add(
         e.inject(
           injector: appInjector,
-          config: configHolder,
         ),
       );
     }
@@ -37,7 +36,6 @@ abstract class AppRunner {
       MyApp(
         routeMoudules: featureContainer.getRouteModules(),
         initialRoute: ProfileRouteModule.root,
-        configHolder: configHolder,
       ),
     );
   }

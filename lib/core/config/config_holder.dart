@@ -1,10 +1,23 @@
 class ConfigHolder {
-  final ServerConfig serverConfig;
-  final FeatureConfig featureConfig;
-  ConfigHolder({
-    required this.serverConfig,
-    required this.featureConfig,
-  });
+  static FeatureConfig? _featureConfig;
+  static FeatureConfig get featureConfig => _featureConfig!;
+  static ServerConfig? _serverConfig;
+  static ServerConfig get serverConfig => _serverConfig!;
+  ConfigHolder._init({
+    required FeatureConfig featureConfig,
+    required ServerConfig serverConfig,
+  }) {
+    _featureConfig = featureConfig;
+    _serverConfig = serverConfig;
+  }
+  static void init({
+    required FeatureConfig featureConfig,
+    required ServerConfig serverConfig,
+  }) =>
+      ConfigHolder._init(
+        featureConfig: featureConfig,
+        serverConfig: serverConfig,
+      );
 }
 
 enum ServerConfig {
