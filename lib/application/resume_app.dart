@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_app/application/theme/my_dark_theme.dart';
+import 'package:resume_app/core/module/localization_module.dart';
 import 'package:resume_app/core/module/route_module.dart';
 
 class MyApp extends StatefulWidget {
@@ -22,9 +23,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My resume',
+      onGenerateTitle: (cxt) => cxt.tr.myResume,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: AppLocalizations.supportedLocales.first,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: MyDarkTheme.colorScheme,
