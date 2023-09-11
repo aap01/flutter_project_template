@@ -12,11 +12,13 @@ A new Flutter scratchpad-project to build up your flutter project on top of it
 
 ## Feature
 
-- Profile(yet to complete)
+- Profile(Yet to complete)
 
 ## Run 
 
 ```bash
+# Generate localization files
+fvm flutter gen-l10n
 # Current flutter verison 3.13.0
 # Configured for fvm
 fvm flutter run -t lib/application/env/prod/prod_main.dart

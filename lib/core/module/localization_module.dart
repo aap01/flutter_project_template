@@ -1,7 +1,6 @@
-import 'package:resume_app/core/config/config_holder.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-abstract class LocalizationModule {
-  Future<void> initLocal({
-    required ConfigHolder configHolder,
-  });
+extension Translation on BuildContext {
+  AppLocalizations get tr => AppLocalizations.of(this)!;
 }
