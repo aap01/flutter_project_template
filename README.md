@@ -19,7 +19,7 @@ A new Flutter scratchpad-project to build up your flutter project on top of it
 ```bash
 # Generate localization files
 fvm flutter gen-l10n
-# Current flutter verison 3.13.0
+# Current flutter verison 3.13.2
 # Configured for fvm
 fvm flutter run -t lib/application/env/prod/prod_main.dart
 ```
