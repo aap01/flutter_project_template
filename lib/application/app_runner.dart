@@ -31,11 +31,12 @@ abstract class AppRunner {
         ),
       );
     }
-    Future.wait(injectionList);
+    await Future.wait(injectionList);
     runApp(
       MyApp(
         routeMoudules: featureContainer.getRouteModules(),
         initialRoute: ProfileRouteModule.root,
+        injector: appInjector,
       ),
     );
   }

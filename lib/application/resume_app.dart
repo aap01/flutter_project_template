@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_app/application/theme/my_dark_theme.dart';
+import 'package:resume_app/core/dependency/injector.dart';
 import 'package:resume_app/core/module/localization_module.dart';
 import 'package:resume_app/core/module/route_module.dart';
 
 class MyApp extends StatefulWidget {
   final List<RouteModule> routeMoudules;
   final String initialRoute;
+  final AppInjector injector;
 
   const MyApp({
     super.key,
     required this.routeMoudules,
     required this.initialRoute,
+    required this.injector,
   });
 
   @override
@@ -53,6 +56,7 @@ class _MyAppState extends State<MyApp> {
     for (final routeModule in widget.routeMoudules) {
       final featureRouteMap = routeModule.get(
         routeSettings: settings,
+        injector: widget.injector,
       );
       routesMap.addAll(featureRouteMap);
     }
