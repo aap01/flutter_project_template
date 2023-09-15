@@ -3,16 +3,16 @@ import 'package:resume_app/application/resume_app.dart';
 import 'package:resume_app/core/config/config_holder.dart';
 import 'package:resume_app/core/dependency/injector.dart';
 import 'package:resume_app/core/feature_container/feature_container.dart';
-import 'package:resume_app/feature/profile/core/route/profile_route_module.dart';
 
 abstract class AppRunner {
-  final FeatureContainer featureContainer;
-
-  AppRunner({
-    required this.featureContainer,
-  });
+  FeatureContainer get featureContainer;
+  String get initialRoute;
+  ServerConfig get serverConfig;
+  FeatureConfig get featureConfig;
 
   Future<void> _preRun() async {
+    /// NOTE: initialize platform dependencies here
+    /// for example: Firebase, Camera, WidgetsFlutterBinding
     WidgetsFlutterBinding.ensureInitialized();
   }
 
@@ -21,8 +21,8 @@ abstract class AppRunner {
     final appInjector = AppInjector();
     final injectionList = <Future>[];
     ConfigHolder.init(
-      serverConfig: ServerConfig.prod,
-      featureConfig: FeatureConfig.prod,
+      serverConfig: serverConfig,
+      featureConfig: featureConfig,
     );
     for (final e in featureContainer.getInjectionModules()) {
       injectionList.add(
@@ -35,7 +35,7 @@ abstract class AppRunner {
     runApp(
       MyApp(
         routeMoudules: featureContainer.getRouteModules(),
-        initialRoute: ProfileRouteModule.root,
+        initialRoute: initialRoute,
         injector: appInjector,
       ),
     );
