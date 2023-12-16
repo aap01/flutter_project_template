@@ -176,3 +176,4 @@ app.*.symbols
 !.vscode/settings.jsonandroid/app/release
 .fvm/flutter_sdk
 l10n_errors.txt
+lib/core/dependency/auto_injector.config.dart
