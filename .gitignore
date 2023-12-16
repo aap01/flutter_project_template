@@ -175,3 +175,4 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.jsonandroid/app/release
 .fvm/flutter_sdk
+l10n_errors.txt
