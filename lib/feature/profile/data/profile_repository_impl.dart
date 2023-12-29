@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:resume_app/core/domain/failure.dart';
 import 'package:resume_app/feature/profile/domain/entity/profile.dart';
 import 'package:resume_app/feature/profile/domain/repository/profile_repository.dart';
+import 'package:resume_app/gen/assets.gen.dart';
 
 @Injectable(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
@@ -10,7 +11,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<Either<Failure, Profile>> getMyProfile() {
     return Future.value(
       right(
-        const Profile(name: 'Alif', imageUrl: 'assets/profile/profile.jpg'),
+        Profile(name: 'Alif', imageUrl: Assets.profile.profile.path),
       ),
     );
   }

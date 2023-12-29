@@ -183,3 +183,4 @@ app.*.symbols
 .fvm/flutter_sdk
 l10n_errors.txt
 lib/core/dependency/auto_injector.config.dart
+lib/gen/assets.gen.dart
