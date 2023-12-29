@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/application/resume_app.dart';
 import 'package:resume_app/core/config/config_holder.dart';
+import 'package:resume_app/core/dependency/auto_injector.dart';
 import 'package:resume_app/core/dependency/injector.dart';
 import 'package:resume_app/core/feature_container/feature_container.dart';
 
@@ -14,29 +15,30 @@ abstract class AppRunner {
     /// NOTE: initialize platform dependencies here
     /// for example: Firebase, Camera, WidgetsFlutterBinding
     WidgetsFlutterBinding.ensureInitialized();
+    configureDependencies();
   }
 
   Future<void> run() async {
     await _preRun();
-    final appInjector = AppInjector();
-    final injectionList = <Future>[];
+    final injector = AppInjector();
     ConfigHolder.init(
       serverConfig: serverConfig,
       featureConfig: featureConfig,
     );
-    for (final e in featureContainer.getInjectionModules()) {
-      injectionList.add(
-        e.inject(
-          injector: appInjector,
-        ),
-      );
-    }
+    final injectionList = featureContainer
+        .getInjectionModules()
+        .map((e) => e.inject(injector: injector))
+        .toList();
+    final routesMap = featureContainer
+        .getRouteModules()
+        .map((e) => e.getRoutes())
+        .reduce((value, element) => value..addAll(element));
     await Future.wait(injectionList);
     runApp(
       MyApp(
-        routeMoudules: featureContainer.getRouteModules(),
+        routesMap: routesMap,
         initialRoute: initialRoute,
-        injector: appInjector,
+        injector: injector,
       ),
     );
   }

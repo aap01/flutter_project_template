@@ -160,6 +160,12 @@ unlinked_spec.ds
 **/linux/flutter/generated_plugin_registrant.h
 **/linux/flutter/generated_plugins.cmake
 
+# Generated
+*.freezed.dart
+*.gr.dart
+*.g.dart
+*.mock.dart
+
 # Coverage
 coverage/
 
@@ -175,3 +181,5 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.jsonandroid/app/release
 .fvm/flutter_sdk
+l10n_errors.txt
+lib/core/dependency/auto_injector.config.dart

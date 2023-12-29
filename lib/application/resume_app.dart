@@ -4,16 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_app/application/theme/my_dark_theme.dart';
 import 'package:resume_app/core/dependency/injector.dart';
 import 'package:resume_app/core/module/localization_module.dart';
-import 'package:resume_app/core/module/route_module.dart';
 
 class MyApp extends StatefulWidget {
-  final List<RouteModule> routeMoudules;
+  final Map<String, Route Function(RouteSettings, Injector)> routesMap;
   final String initialRoute;
-  final AppInjector injector;
+  final Injector injector;
 
   const MyApp({
     super.key,
-    required this.routeMoudules,
+    required this.routesMap,
     required this.initialRoute,
     required this.injector,
   });
@@ -23,6 +22,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,14 +56,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   Route? _generateRoute(RouteSettings settings) {
-    final routesMap = <String, Route>{};
-    for (final routeModule in widget.routeMoudules) {
-      final featureRouteMap = routeModule.get(
-        routeSettings: settings,
-        injector: widget.injector,
-      );
-      routesMap.addAll(featureRouteMap);
-    }
-    return routesMap[settings.name];
+    debugPrint('RouteName:${settings.name}');
+    debugPrint('RouteArgs:${settings.arguments.toString()}');
+    return widget.routesMap[settings.name]?.call(settings, widget.injector);
   }
 }
