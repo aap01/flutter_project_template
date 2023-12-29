@@ -8,7 +8,7 @@ A new Flutter scratchpad-project to build up your flutter project on top of it
 - [x] Feature First Design
 - [x] Bloc
 - [x] Application Localization
-- [x] Better Asset Management(Yet to complete)
+- [x] Better Asset Management
 
 ## Feature
 
