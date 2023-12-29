@@ -8,8 +8,10 @@ import 'package:resume_app/feature/profile/domain/repository/profile_repository.
 class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<Failure, Profile>> getMyProfile() {
-    return Future.value(right(
-      const Profile(name: 'Alif', imageUrl: 'unknown'),
-    ));
+    return Future.value(
+      right(
+        const Profile(name: 'Alif', imageUrl: 'assets/profile/profile.jpg'),
+      ),
+    );
   }
 }
