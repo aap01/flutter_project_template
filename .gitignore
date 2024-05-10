@@ -180,7 +180,9 @@ app.*.symbols
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.jsonandroid/app/release
-.fvm/flutter_sdk
 l10n_errors.txt
 lib/core/dependency/auto_injector.config.dart
 lib/gen/assets.gen.dart
+
+# FVM Version Cache
+.fvm/
